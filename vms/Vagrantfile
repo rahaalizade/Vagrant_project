@@ -62,7 +62,13 @@ Vagrant.configure("2") do |config|
         echo "Add salt IP to hosts"
         echo "192.168.33.10   salt" >> /etc/hosts
         echo "192.168.33.10   salt-master" >> /etc/hosts
-
+        
+        echo "Install lvm"
+        sudo apt-get install lvm2 -y
+        pvcreate /dev/sdb
+        pvs
+        vgcreate vg01 /dev/sdb
+        vgdisplay vg01
      SHELL
     end
     
