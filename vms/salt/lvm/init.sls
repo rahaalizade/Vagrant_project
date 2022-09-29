@@ -9,6 +9,24 @@ vg01:
     - devices: /dev/sdb
 
 
+#{% for container, lvname in pillar.get('ns_lv',{} ).items() %}
+#/var/lib/machines/{{container}}:
+#  mount.unmounted:
+#    - device: /dev/vg01/{{lvname}}
+#    - fstype: ext4
+#    - mkmount: True
+#    - opts:
+#      - defaults
+#{% endfor %}
+#
+#
+#{% for container, lvname in pillar.get('lv_containers',{} ).items() %}
+#{{lvname}}:
+#  lvm.lv_absent:
+#    - vgname: vg01
+#{% endfor %}
+
+
 {% for ns, lvname in pillar.get('lv_containers',{} ).items() %}
 {{lvname}}:
   lvm.lv_present:
@@ -17,17 +35,13 @@ vg01:
 {% endfor %}
 
 
-#{% for container, lvname in pillar.get('lv_containers',{} ).items() %}
-#{{lvname}}:
-#  lvm.lv_absent:
-#    - vgname: vg01
-#{% endfor %}
 
 {% for container, nsname in pillar.get('ns_containers',{} ).items() %}
 mkdir -p /var/lib/machines/{{nsname}}:
   cmd.run:
     - creates: /var/lib/machines/container
 {% endfor %}
+
 
 {% for lv, lvname in pillar.get('lv_containers',{} ).items() %} 
 format_disk{{lv}}:
@@ -37,6 +51,7 @@ format_disk{{lv}}:
     - require:
         - {{lvname}}
 {% endfor %}
+
 
 {% for container, lvname in pillar.get('ns_lv',{} ).items() %}
 /var/lib/machines/{{container}}:
