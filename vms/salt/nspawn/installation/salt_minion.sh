@@ -1,5 +1,6 @@
 #! /bin/bash
 
+apt-get update
 apt-get install curl -y 
 
 curl -fsSL -o /usr/share/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/salt/py3/debian/11/amd64/latest/salt-archive-keyring.gpg

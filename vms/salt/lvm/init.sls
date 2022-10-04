@@ -25,6 +25,10 @@ vg01:
 #  lvm.lv_absent:
 #    - vgname: vg01
 #{% endfor %}
+#
+#/var/lib/machines/:
+#  file.absent:
+#    - name: /var/lib/machines
 
 
 {% for ns, lvname in pillar.get('lv_containers',{} ).items() %}
@@ -36,10 +40,18 @@ vg01:
 
 
 
-{% for container, nsname in pillar.get('ns_containers',{} ).items() %}
-mkdir -p /var/lib/machines/{{nsname}}:
-  cmd.run:
-    - creates: /var/lib/machines/container
+#{% for container, nsname in pillar.get('ns_containers',{} ).items() %}
+#mkdir -p /var/lib/machines/{{nsname}}:
+#  cmd.run:
+#    - creates: /var/lib/machines/container
+#{% endfor %}
+
+{% for container, nsname in pillar.get('ns_containers', {} ).items() %}
+/var/lib/machines/{{container}}:
+  file.directory:
+    - name: /var/lib/machines/{{nsname}}
+    - mode: 755
+    - makedirs: True
 {% endfor %}
 
 
@@ -58,7 +70,7 @@ format_disk{{lv}}:
   mount.mounted:
     - device: /dev/vg01/{{lvname}}
     - fstype: ext4
-    - mkmount: True
+    - mkmnt: True
     - opts:
       - defaults
 {% endfor %}
