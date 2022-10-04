@@ -3,5 +3,5 @@ ns_containers:
 #  ns2: redis
 #  ns3: mysql
 #  ns4: memcached
-#  ns5: php_nginx
+  ns5: php-nginx
 #  ns6: mcrouter
