@@ -1,5 +1,6 @@
 lvm2:
-  pkg.installed: []
+  pkg:
+    - installed
 
 /dev/sdb:
   lvm.pv_present
