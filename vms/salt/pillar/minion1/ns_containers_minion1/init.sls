@@ -1,7 +1,7 @@
 ns_containers:
-  ns1-1: elastic-1
-#  ns2-1: redis-1
-#  ns3-1: mysql-1
-#  ns4-1: memcached-1
-  ns5-1: php-nginx-1
-#  ns6-1: mcrouter-1
+  ns1-2: elastic-2
+#  ns2-2: redis-2
+#  ns3-2: mysql-2
+#  ns4-2: memcached-2
+  ns5-2: php-nginx-2
+#  ns6-2: mcrouter-2
