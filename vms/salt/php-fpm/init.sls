@@ -1,4 +1,4 @@
-php7.4-fpm:
+php-fpm:
    pkg:
      - installed 
 
@@ -8,7 +8,7 @@ create php direcotry:
 
 php-fpm service:
   service.running:
-    - name: php7.4-fpm
+    - name: php7.0-fpm
     - enable: True
   watch:
-    - pkg: php7.4-fpm
+    - pkg: php7.0-fpm

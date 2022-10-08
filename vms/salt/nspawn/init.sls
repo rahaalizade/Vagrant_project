@@ -6,6 +6,12 @@ Install packages:
     - pkgs:
         - curl
 
+#{% for container, nsname in pillar.get('ns_containers',{} ).items() %}
+#shoutdown {{container}}:
+#  cmd.run:
+#    - name: systemctl stop systemd-nspawn@{{nsname}}
+#{% endfor %}
+
 Install nspawn:
   cmd.script:
     - name: create_nspawn.sh
