@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
    SHELL
  end
   
-  (1..2).each do |i|
+  (1..3).each do |i|
     disk_name = "./disk-minion#{i}.vdi"
     config.vm.define "minion#{i}" do |worker|
       worker.vm.box = "debian/buster64"
