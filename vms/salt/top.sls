@@ -7,6 +7,15 @@ base:
     - nginx
     - php-fpm
 
+  'redis-1:
+    - redis.redis-master
+  
+  'redis-2:
+    - redis.redis-slave
+  
+  'redis-3:
+    - redis.redis-slave   
+
 #  'minion1':
 #    - match: glob
 #    - nspawn1
