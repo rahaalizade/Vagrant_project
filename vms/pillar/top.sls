@@ -16,10 +16,12 @@ base:
 
   'redis-1':
     - redis-master.redis_configuration_master
+    - redis-sentinel-master
   
   'redis-2':  
     - redis-slave.redis_configuration_slave
-
+    - redis-sentinel-slave1 
+   
   'redis-3':
     - redis-slave.redis_configuration_slave
-
+    - redis-sentinel-slave2
