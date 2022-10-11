@@ -16,6 +16,9 @@ base:
   'redis-3:
     - redis.redis-slave   
 
+  'elastic-1':
+    - elastic.install-elastic
+
 #  'minion1':
 #    - match: glob
 #    - nspawn1

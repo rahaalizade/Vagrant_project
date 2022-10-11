@@ -4,3 +4,7 @@
     - user: redis
     - group: redis
     - template: jinja
+
+sentinel server:
+  cmd.run:
+    - name: systemctl restart redis-sentinel 
