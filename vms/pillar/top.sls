@@ -19,9 +19,9 @@ base:
     - redis-sentinel-master
   
   'redis-2':  
-    - redis-slave.redis_configuration_slave
+    - redis-slave1.redis_configuration_slave
     - redis-sentinel-slave1 
    
   'redis-3':
-    - redis-slave.redis_configuration_slave
+    - redis-slave2.redis_configuration_slave
     - redis-sentinel-slave2
