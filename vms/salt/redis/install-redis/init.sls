@@ -7,6 +7,7 @@ Install redis and redis-sentinel:
     - pkgs: 
       - redis-server
       - redis-sentinel
+    - hold: True
   
 redis service:
   service.running:

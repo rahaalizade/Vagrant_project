@@ -1,3 +1,4 @@
-Install Percona:
-  pkg.installed:
-    - name
+include:
+  - install-percona
+  - backup-percona
+  - replicate-slave

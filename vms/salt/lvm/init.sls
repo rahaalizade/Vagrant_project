@@ -1,14 +1,4 @@
-lvm2:
-  pkg:
-    - installed
-
-/dev/sdb:
-  lvm.pv_present
-
-vg01:
-  lvm.vg_present:
-    - devices: /dev/sdb
-
+### FOR UNMOUNT AND REMOVE LOGICAL VOLUMES ###
 
 #{% for container, lvname in pillar.get('ns_lv',{} ).items() %}
 #/var/lib/machines/{{container}}:
@@ -16,12 +6,9 @@ vg01:
 #    - device: /dev/vg01/{{lvname}}
 #    - fstype: ext4
 #    - mkmount: True
-#    - opts:
-#      - defaults
 #{% endfor %}
 #
-#
-#{% for container, lvname in pillar.get('lv_containers',{} ).items() %}
+#{% for lvname, size in pillar.get('lv_containers',{} ).items() %}
 #{{lvname}}:
 #  lvm.lv_absent:
 #    - vgname: vg01
@@ -31,15 +18,27 @@ vg01:
 #  file.absent:
 #    - name: /var/lib/machines
 
+##############################################
 
-{% for ns, lvname in pillar.get('lv_containers',{} ).items() %}
+Install lvm:
+  pkg.installed:
+    - pkgs:
+        - lvm2
+    - hold: True
+
+/dev/sdb:
+  lvm.pv_present
+
+vg01:
+  lvm.vg_present:
+    - devices: /dev/sdb
+
+{% for lvname, size in pillar.get('lv_containers',{} ).items() %}
 {{lvname}}:
   lvm.lv_present:
     - vgname: vg01
-    - size: 8G
+    - size: {{size}}
 {% endfor %}
-
-
 
 #{% for container, nsname in pillar.get('ns_containers',{} ).items() %}
 #mkdir -p /var/lib/machines/{{nsname}}:
@@ -55,9 +54,8 @@ vg01:
     - makedirs: True
 {% endfor %}
 
-
-{% for lv, lvname in pillar.get('lv_containers',{} ).items() %} 
-format_disk{{lv}}:
+{% for lvname, size in pillar.get('lv_containers',{} ).items() %} 
+format_disk{{lvname}}:
   blockdev.formatted:
     - name: /dev/vg01/{{lvname}}
     - fs_type: ext4
@@ -65,13 +63,10 @@ format_disk{{lv}}:
         - {{lvname}}
 {% endfor %}
 
-
 {% for container, lvname in pillar.get('ns_lv',{} ).items() %}
 /var/lib/machines/{{container}}:
   mount.mounted:
     - device: /dev/vg01/{{lvname}}
     - fstype: ext4
-    - mkmnt: True
-    - opts:
-      - defaults
+    - mkmnt: True 
 {% endfor %}

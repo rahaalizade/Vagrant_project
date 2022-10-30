@@ -1,0 +1,37 @@
+cluster.name: {{ pillar['master']['cluster_name'] }}
+# ------------------------------------ Node ------------------------------------
+
+node.name: {{ grains['host'] }}
+node.master: {{ pillar['master']['node_master'] }}
+node.data: {{ pillar['master']['node_data'] }}
+
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+
+path.data: /var/lib/elasticsearch
+
+# Path to log files:
+
+path.logs: /var/log/elasticsearch
+
+# ---------------------------------- Network -----------------------------------
+
+#http.port: 9200
+
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+
+discovery.zen.ping.unicast.hosts: [{{ pillar['master']['master_1'] }},{{ pillar['master']['master_2'] }},{{ pillar['master']['master_3'] }} ]
+
+discovery.type: zen
+
+discovery.zen.minimum_master_nodes: 3
+
+network.host: {{ grains['ipv4'][2] }}
+
+# Bootstrap the cluster using an initial set of master-eligible nodes:
+
+cluster.initial_master_nodes: [{{ pillar['master']['master_1'] }},{{ pillar['master']['master_2'] }},{{ pillar['master']['master_3'] }} ]
+

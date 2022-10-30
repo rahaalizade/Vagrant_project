@@ -1,6 +1,8 @@
-nginx:
-  pkg:
-    - installed
+Install nginx package:
+  pkg.installed:
+    - pkgs:
+        - nginx
+    - hold: True
 
 nginx service:
   service.running:
@@ -9,7 +11,7 @@ nginx service:
     - watch:
         - pkg: nginx
         - file: /etc/nginx/sites-available/default
-  
+ 
 /etc/nginx/sites-available/default:
   file.managed:
     - source: salt://nginx/files/default

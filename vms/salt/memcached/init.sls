@@ -1,7 +1,8 @@
-Install packages:
+install memcached package:
   pkg.installed:
     - pkgs:
         - memcached
+    - hold: True
 
 memcached service:
   service.running:

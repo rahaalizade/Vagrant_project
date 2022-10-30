@@ -5,8 +5,8 @@ systemctl enable systemd-networkd
 
 {% for container, nsname in pillar.get('ns_containers', {} ).items() %}
 
-machinectl shell {{nsname}} /usr/bin/systemctl start systemd-networkd
-machinectl shell {{nsname}} /usr/bin/systemctl enable systemd-networkd
+#machinectl shell {{nsname}} /usr/bin/systemctl start systemd-networkd
+#machinectl shell {{nsname}} /usr/bin/systemctl enable systemd-networkd
 
 mkdir /etc/systemd/nspawn
 echo "[Network]

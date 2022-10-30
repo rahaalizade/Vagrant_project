@@ -1,6 +1,8 @@
-php-fpm:
-   pkg:
-     - installed 
+Install php-fpm package:
+   pkg.installed:
+    - pkgs:
+        - php-fpm
+    - hold: True
 
 create php direcotry:
   file.directory:
