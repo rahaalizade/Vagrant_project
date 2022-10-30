@@ -1,7 +1,7 @@
 lv_containers:
-  lv1: elastic_data
-  lv2: redis_data
-  lv3: mysql_data
-  lv4: memcached_data
-  lv5: php_nginx_data
-#  lv6: mcrouter_data
+  elastic_data: 8G
+  redis_data: 7G
+  mysql_data: 8G
+  memcached_data: 7G
+  php_nginx_data: 5G
+  mcrouter_data: 9G

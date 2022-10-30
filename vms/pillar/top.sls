@@ -13,15 +13,38 @@ base:
     - minion3.lv_containers_minion3
     - minion3.ns_containers_minion3
     - minion3.ns_lv_minion3
-
+ 
   'redis-1':
-    - redis-master.redis_configuration_master
-    - redis-sentinel-master
+    - redis.redis-config
+    - redis.redis-sentinel-config
   
   'redis-2':  
-    - redis-slave1.redis_configuration_slave
-    - redis-sentinel-slave1 
-   
+    - redis.redis-config
+    - redis.redis-sentinel-config
+
   'redis-3':
-    - redis-slave2.redis_configuration_slave
-    - redis-sentinel-slave2
+    - redis.redis-config
+    - redis.redis-sentinel-config
+     
+  'elastic-1':
+    - elastic.elastic-master
+
+  'elastic-2':
+    - elastic.elastic-master
+
+  'elastic-3':
+    - elastic.elastic-master
+  
+  'mysql-1':
+    - mysql
+    - percona
+  
+  'mysql-2':
+    - mysql
+    - percona
+  
+  'mcrouter-1':
+    - mcrouter.pkgs
+
+  'mcrouter-2':
+    - mcrouter.pkgs

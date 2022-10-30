@@ -4,4 +4,4 @@ ns_containers:
   ns3-3: mysql-3
   ns4-3: memcached-3
   ns5-3: php-nginx-3
-#  ns6-3: mcrouter-3
+  ns6-3: mcrouter-3
