@@ -1,8 +1,8 @@
-Delete salt.list:
+delete salt.list:
   file.absent:
     - name: /etc/apt/sources.list.d/salt.list
 
-Install redis and redis-sentinel:
+install redis and redis-sentinel:
   pkg.installed:
     - pkgs: 
       - redis-server

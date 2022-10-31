@@ -9,5 +9,5 @@ sentinel:
   pidfile: /var/run/redis/redis-sentinel.pid
   logfile: /var/log/redis/redis-sentinel.log
   dir: /var/lib/redis
-  failover: 5000
-  down: 60000
+  failover: 18000
+  down: 5000
