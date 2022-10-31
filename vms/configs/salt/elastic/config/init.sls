@@ -18,7 +18,7 @@ elasticsearch service:
 
 delete useless variables:
   cmd.run:
-    - name: rm -rf /var/lib/elasticsearch/*
+    - name: rm -rf /var/lib/elasticsearch/*++++++++++++++++++++++++++++++++++++++++++++++++
 
 restart elasticsearch service:
   cmd.run:
