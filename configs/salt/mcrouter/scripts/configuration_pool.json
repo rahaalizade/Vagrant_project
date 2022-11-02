@@ -1,0 +1,18 @@
+{
+  "pools":{
+    "A":{
+      "servers":["192.168.33.12:11211",
+                 "192.168.33.13:11211"]
+    }
+  },
+  "route":{
+    "type":"OperationSelectorRoute",
+    "operation_policies":{
+         "delete":"AllSyncRoute|Pool|A",
+         "get":"FailoverRoute|Pool|A",
+         "gets":"FailoverRoute|Pool|A",
+         "set":"AllSyncRoute|Pool|A",
+         "add":"AllInitialRoute|Pool|A"
+    }
+  }
+}

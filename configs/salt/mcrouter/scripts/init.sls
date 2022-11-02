@@ -1,0 +1,18 @@
+{
+  "pools":{
+    "A":{
+      "servers":["memcached1:11211",
+                 "memcached2:11211"]
+    }
+  },
+  "route":{
+    "type":"OperationSelectorRoute",
+    "operation_policies":{
+         "delete":"AllSyncRoute|Pool|A",
+         "get":"FailoverRoute|Pool|A",
+         "gets":"FailoverRoute|Pool|A",
+         "set":"AllSyncRoute|Pool|A",
+         "add":"AllInitialRoute|Pool|A"
+    }
+  }
+}

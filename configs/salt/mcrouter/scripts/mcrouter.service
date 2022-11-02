@@ -1,0 +1,9 @@
+[Unit]
+Description=mcrouter service
+
+[Service]
+ExecStart=/usr/bin/mcrouter --listen-addresses=0.0.0.0 --config-file=/root/configuration_pool.json -p 5005
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target
