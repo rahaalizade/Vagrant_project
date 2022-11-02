@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
 
- config.vm.synced_folder '/home/fateme/Desktop/Vagrant_project/vms/configs', '/vagrant'
+ config.vm.synced_folder '/home/fateme/Desktop/Vagrant_project/configs', '/vagrant'
  config.vm.define "master" do |master|
    master.vm.box = "debian/stretch64"
    master.vm.hostname = "master"
