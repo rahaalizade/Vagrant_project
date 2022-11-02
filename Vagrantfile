@@ -14,9 +14,11 @@ Vagrant.configure("2") do |config|
  
 
    master.vm.provision "shell", inline: <<-SHELL
-     sudo curl -fsSL -o /usr/share/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/salt/py3/debian/10/amd64/latest/salt-archive-keyring.gpg
-
-     echo "deb [signed-by=/usr/share/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/10/amd64/2016.7.17 buster main" | sudo tee /etc/apt/sources.list.d/salt.list
+     
+     sudo apt install curl -y
+     sudo curl -fsSL -o /usr/share/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/py3/debian/9/amd64/3004/salt-archive-keyring.gpg
+     
+     echo "deb [signed-by=/usr/share/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/py3/debian/9/amd64/3004 stretch main" | sudo tee /etc/apt/sources.list.d/salt.list     
 
      apt-get update
      apt-get install salt-master -y 
@@ -49,10 +51,12 @@ Vagrant.configure("2") do |config|
       end
 
       worker.vm.provision "shell", inline: <<-SHELL
-        sudo curl -fsSL -o /usr/share/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/salt/py3/debian/10/amd64/latest/salt-archive-keyring.gpg
 
-        echo "deb [signed-by=/usr/share/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/10/amd64/2016.7.17 buster main" | sudo tee /etc/apt/sources.list.d/salt.list
-
+        sudo apt install curl -y       
+        sudo curl -fsSL -o /usr/share/keyrings/salt-archive-keyring.gpg https://repo.saltproject.io/py3/debian/9/amd64/3004/salt-archive-keyring.gpg
+        
+        echo "deb [signed-by=/usr/share/keyrings/salt-archive-keyring.gpg arch=amd64] https://repo.saltproject.io/py3/debian/9/amd64/3004 stretch main" | sudo tee /etc/apt/sources.list.d/salt.list
+ 
         apt-get update
         apt-get install salt-minion -y
         apt-get install salt-ssh -y
