@@ -47,4 +47,7 @@ base:
     - mcrouter.pkgs
  
   'memcached-2':
-    - memmcached
+    - memcached
+
+  'memcached-3':
+    - memcached

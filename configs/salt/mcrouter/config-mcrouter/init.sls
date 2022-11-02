@@ -20,7 +20,7 @@ system reload:
 {% if existense == "Not Exists" %}
 setup mcrouter:
   cmd.run:
-    - name: mcrouter --config-file='/root/configuration_pool.json'
+    - name: mcrouter --config-file='/root/configuration_pool.json' -p 5000
     - user: root
     - group: root
 {% endif %}
