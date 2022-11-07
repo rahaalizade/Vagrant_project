@@ -11,6 +11,12 @@ install memcached package:
     - user: root
     - group: root
 
+restart service:
+  cmd.run:
+    - name: systemctl restart memcached
+    - user: root
+    - group: root
+
 memcached service:
   service.running:
     - name: memcached
