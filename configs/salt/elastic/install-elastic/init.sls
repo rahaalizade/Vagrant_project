@@ -14,10 +14,10 @@ install elasticsearch:
     - source: salt://elastic/files/jvm-config/jvm.options
     - user: root
 
-restart elasticsearch:
-  cmd.run:
-    - name: systemctl enable elasticsearch && systemctl restart elasticsearch
-
-elasticsearch service:
-  service.running:
-    - name: elasticsearch
+#restart elasticsearch:
+#  cmd.run:
+#    - name: systemctl enable elasticsearch && systemctl restart elasticsearch
+#
+#elasticsearch service:
+#  service.running:
+#    - name: elasticsearch
